@@ -19,15 +19,15 @@ jobs:
           run: npm run se2e
       - name: Email results
         uses: dawidd6/action-send-mail@master
-          with:
-            server_address: smtp.gmail.com
-            server_port: 465
-            username: ${{secrets.MAIL_USERNAME}}
-            password: ${{secrets.MAIL_PASSWORD}}
-            subject: E2E results
-            # Literal body:
-            body: E2E job of ${{github.repository}} completed successfully!
-            to: wade.w.wilkey@gmail.com
-            from: Luke Skywalker
-            # Optional content type:
-            content_type: text/html
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: E2E results
+          # Literal body:
+          body: E2E job of ${{github.repository}} completed successfully!
+          to: wade.w.wilkey@gmail.com
+          from: Luke Skywalker
+          # Optional content type:
+          content_type: text/html
