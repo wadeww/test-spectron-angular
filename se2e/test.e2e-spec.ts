@@ -40,6 +40,7 @@ describe("hi", () => {
 
   it("Should launch the application and open a window", async () => {
     const count = await app.client.getWindowCount();
+    console.log('hi');
     expect(count).to.equal(1);
   });
 
