@@ -41,6 +41,7 @@ describe("hi", () => {
   it("Should launch the application and open a window", async () => {
     const count = await app.client.getWindowCount();
     expect(count).to.equal(1);
+     console.log('hi');
   });
 
   it("should find new component span", async () => {
