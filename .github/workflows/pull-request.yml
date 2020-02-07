@@ -25,6 +25,6 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: E2E results
-          body: E2E job of ${{github.repository}} completed successfully!
+          body: E2E tests against ${{github.ref}}: ${{job.status}}
           to: wade.w.wilkey@gmail.com
           from: meeee
