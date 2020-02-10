@@ -29,6 +29,9 @@ describe("hi", () => {
       chromeDriverLogPath: "../chromedriverlog.txt"
     });
 
+    await app.start();
+    await app.client.waitUntilWindowLoaded();
+      
     const bounds = app.browserWindow.getBounds();
 
     console.log('Window Size:', bounds.width, bounds.height);
@@ -37,8 +40,6 @@ describe("hi", () => {
     const maxBounds = app.browserWindow.getBounds();
     console.log('Max Window Size:', maxBounds.width, maxBounds.height);
 
-    await app.start();
-    await app.client.waitUntilWindowLoaded();
   });
 
   after(() => {
