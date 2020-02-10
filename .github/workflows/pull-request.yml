@@ -4,15 +4,27 @@ on: pull_request
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@master
-      with:
-        node-version: 12.x
-    - name: Install
-      run: npm ci
-    - name: E2E
-      run: npm run se2e
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+      - name: Install
+        run: npm ci
+      - name: E2E
+        uses: GabrielBB/xvfb-action@v1.0
+        with:
+          run: npm run se2e
+      - name: Email results
+        uses: wadeww/send-email-action@master
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: E2E results
+          body: E2E tests against ${{github.ref}} Status ${{job.status}}
+          to: wade.w.wilkey@gmail.com
+          from: meeee
