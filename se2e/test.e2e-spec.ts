@@ -28,8 +28,20 @@ describe("hi", () => {
       startTimeout: 20000,
       chromeDriverLogPath: "../chromedriverlog.txt"
     });
+
     await app.start();
     await app.client.waitUntilWindowLoaded();
+
+    await new Promise((resolve) => setTimeout(resolve, 30000));
+
+    const bounds = await app.browserWindow.getBounds();
+
+    console.log('Window Size:', bounds.width, bounds.height);
+    app.browserWindow.maximize();
+
+    const maxBounds = await app.browserWindow.getBounds();
+    console.log('Max Window Size:', maxBounds.width, maxBounds.height);
+
   });
 
   after(() => {
