@@ -34,12 +34,12 @@ describe("hi", () => {
 
     await new Promise((resolve) => setTimeout(resolve, 30000));
 
-    const bounds = app.browserWindow.getBounds();
+    const bounds = await app.browserWindow.getBounds();
 
     console.log('Window Size:', bounds.width, bounds.height);
     app.browserWindow.maximize();
 
-    const maxBounds = app.browserWindow.getBounds();
+    const maxBounds = await app.browserWindow.getBounds();
     console.log('Max Window Size:', maxBounds.width, maxBounds.height);
 
   });
