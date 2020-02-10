@@ -2,7 +2,7 @@ import { Application } from "spectron";
 import { expect } from "chai";
 import * as path from "path";
 
-describe("hi", () => {
+describe("E2E Tests", () => {
   let app;
   before(async () => {
     let electronPath = path.join(
@@ -32,7 +32,7 @@ describe("hi", () => {
     await app.start();
     await app.client.waitUntilWindowLoaded();
 
-    await new Promise((resolve) => setTimeout(resolve, 30000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
 
     const bounds = await app.browserWindow.getBounds();
 
@@ -41,6 +41,11 @@ describe("hi", () => {
 
     const maxBounds = await app.browserWindow.getBounds();
     console.log('Max Window Size:', maxBounds.width, maxBounds.height);
+
+    await app.browserWindow.setSize(1500, 900);
+    const myBounds = await app.browserWindow.getBounds();
+    console.log('Set Window Size:', myBounds.width, myBounds.height);
+
 
   });
 
